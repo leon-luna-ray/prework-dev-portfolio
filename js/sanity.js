@@ -7,7 +7,7 @@ export const client = createClient({
   apiVersion: '2023-04-08',
 })
 
-export async function getProjects() {
-  const projects = await client.fetch('*[_type == "project"]')
+export async function getFeaturedProjects() {
+  const projects = await client.fetch('*[_type == "project" && featured] | order(_updatedAt desc)')
   return projects
 }

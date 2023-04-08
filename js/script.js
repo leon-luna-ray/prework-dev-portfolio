@@ -1,7 +1,7 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, getProjects } from './sanity';
+import { client, getFeaturedProjects } from './sanity';
 
-const projects = await getProjects();
+const projects = await getFeaturedProjects();
 const builder = imageUrlBuilder(client);
 
 const projectSection = document.querySelector('.projects');
