@@ -21,26 +21,40 @@ if (projects.length) {
     const title = document.createElement('h3');
     const text = document.createElement('p');
     const image = document.createElement('img');
+    const imageLink = document.createElement('a');
+    const links = document.createElement('div');
     const projectLink = document.createElement('a');
     const codeLink = document.createElement('a');
 
     content.classList.add('content');
+    links.classList.add('links');
+
     title.textContent = project?.title;
     text.textContent = project?.description[0].children[0].text;
+
     image.src = getImageUrl(project?.mainImage).width(200).url();
+    imageLink.classList.add('image-link');
+    imageLink.href = project?.url;
+    imageLink.target = '_blank';
+    imageLink.appendChild(image);
+
     projectLink.href = project?.url;
     projectLink.target = '_blank';
     projectLink.textContent = project?.title;
 
-    content.appendChild(title);
-    content.appendChild(text);
-    content.appendChild(projectLink);
+    links.appendChild(projectLink);
+
     if (project.repository) {
       codeLink.href = project.repository;
       codeLink.textContent = 'Code'
-      content.appendChild(codeLink);
+      links.appendChild(codeLink);
     }
-    listItem.appendChild(image);
+
+    content.appendChild(title);
+    content.appendChild(text);
+    content.appendChild(links);
+
+    listItem.appendChild(imageLink);
     listItem.appendChild(content);
     projectList.appendChild(listItem);
   });
