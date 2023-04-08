@@ -16,32 +16,32 @@ if (projects.length) {
   projectSection.classList.remove('hidden');
 
   projects.forEach((project) => {
+    console.log(project)
     const listItem = document.createElement('li');
     const content = document.createElement('div');
     const title = document.createElement('h3');
     // todo: Handle richtext
-    // const text = document.createElement('p');
+    const text = document.createElement('p');
     const image = document.createElement('img');
     const projectLink = document.createElement('a');
     const codeLink = document.createElement('a');
 
     content.classList.add('content');
-    image.src = getImageUrl(project?.mainImage).width(200).url();
     title.textContent = project?.title;
-
+    text.textContent = project?.description[0].children[0].text;
+    image.src = getImageUrl(project?.mainImage).width(200).url();
     projectLink.href = project?.url;
     projectLink.target = '_blank';
     projectLink.textContent = project?.title;
 
     content.appendChild(title);
+    content.appendChild(text);
     content.appendChild(projectLink);
-
     if (project.repository) {
       codeLink.href = project.repository;
       codeLink.textContent = 'Code'
       content.appendChild(codeLink);
     }
-
     listItem.appendChild(image);
     listItem.appendChild(content);
     projectList.appendChild(listItem);
