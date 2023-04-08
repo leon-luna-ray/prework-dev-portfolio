@@ -16,11 +16,9 @@ if (projects.length) {
   projectSection.classList.remove('hidden');
 
   projects.forEach((project) => {
-    console.log(project)
     const listItem = document.createElement('li');
     const content = document.createElement('div');
     const title = document.createElement('h3');
-    // todo: Handle richtext
     const text = document.createElement('p');
     const image = document.createElement('img');
     const projectLink = document.createElement('a');
