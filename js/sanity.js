@@ -7,7 +7,6 @@ export const client = createClient({
   apiVersion: '2023-04-08',
 })
 
-// uses GROQ to query content: https://www.sanity.io/docs/groq
 export async function getProjects() {
   const projects = await client.fetch('*[_type == "project"]')
   return projects

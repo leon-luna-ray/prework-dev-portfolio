@@ -4,64 +4,46 @@ import { client, getProjects } from './sanity';
 const projects = await getProjects();
 const builder = imageUrlBuilder(client);
 
-const projectList = document.querySelector('.projects ul')
+const projectSection = document.querySelector('.projects');
+const projectList = document.querySelector('.projects ul');
 
 function getImageUrl(source) {
   return builder.image(source);
 }
 
+// Projects
 if (projects.length) {
+  projectSection.classList.remove('hidden');
+
   projects.forEach((project) => {
-    console.log(project);
-    let listItem = document.createElement('li');
-    let content = document.createElement('div');
-    let title = document.createElement('h3');
+    const listItem = document.createElement('li');
+    const content = document.createElement('div');
+    const title = document.createElement('h3');
     // todo: Handle richtext
-    // let text = document.createElement('p');
-    let image = document.createElement('img');
+    // const text = document.createElement('p');
+    const image = document.createElement('img');
+    const projectLink = document.createElement('a');
+    const codeLink = document.createElement('a');
 
-
-    title.textContent = project?.title;
-    image.src = getImageUrl(project.mainImage).width(200).url();
     content.classList.add('content');
+    image.src = getImageUrl(project?.mainImage).width(200).url();
+    title.textContent = project?.title;
+
+    projectLink.href = project?.url;
+    projectLink.target = '_blank';
+    projectLink.textContent = project?.title;
 
     content.appendChild(title);
+    content.appendChild(projectLink);
+
+    if (project.repository) {
+      codeLink.href = project.repository;
+      codeLink.textContent = 'Code'
+      content.appendChild(codeLink);
+    }
+
     listItem.appendChild(image);
     listItem.appendChild(content);
     projectList.appendChild(listItem);
   });
 }
-
-// let QUERY = encodeURIComponent('*[_type == "project"]');
-
-// // Compose the URL for your project's endpoint and add the query
-// let PROJECTS_URL = `https://${import.meta.env.VITE_SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${import.meta.env.VITE_SANITY_DATASET}?query=${QUERY}`;
-
-// fetch(PROJECTS_URL)
-//   .then((res) => res.json())
-//   .then(({ result }) => {
-//     let list = document.querySelector('.projects ul');
-//     let firstListItem = document.querySelector('ul li');
-
-//     if (result.length > 0) {
-//       console.log(result)
-//       list.removeChild(firstListItem);
-
-//       result.forEach((project) => {
-//         let listItem = document.createElement('li');
-//         let image = document.createElement('img');
-
-//         image.src =
-
-//         // add the project name as the text content
-//         listItem.textContent = project?.title;
-
-//         // add the item to the list
-//         list.appendChild(listItem);
-//       });
-//       // let pre = document.querySelector('pre');
-//       // add the raw data to the preformatted element
-//       // pre.textContent = JSON.stringify(result, null, 2);
-//     }
-//   })
-//   .catch((err) => console.error(err));

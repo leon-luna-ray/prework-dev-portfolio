@@ -1,7 +1,11 @@
 body {
-    color: #222222;
-    font-size: 1em;
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  color: #222222;
+  font-size: 1em;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.hidden {
+  display: none;
 }
 
 .content-footer,
@@ -18,40 +22,51 @@ body {
 }
 
 .masthead-intro {
-    margin-bottom: 0.1em;
-    font-size: 2em;
-    color: #ffffff;
+  margin-bottom: 0.1em;
+  font-size: 2em;
+  color: #ffffff;
 }
 
 .masthead-heading {
-    margin-top: -0.2em;
-    font-weight: bold;
-    font-size: 6em;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    color: #ffffff;
+  margin-top: -0.2em;
+  font-weight: bold;
+  font-size: 6em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 section {
-    max-width: 38em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2em;
-}
-
-.details > p {
-    font-weight: 300;
-    letter-spacing: 0.05em;
-}
-
-.details > h2 {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 2em 0 1em 0;
+  max-width: 38em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
 }
 
 section > h1 {
-    margin-top: 2em;
+  margin-top: 2em;
+}
+
+.details > p {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.details > h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 2em 0 1em 0;
+}
+
+.projects ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  padding-inline-start: 0;
+}
+.projects li {
+  display: flex;
 }
 
 #footer {
