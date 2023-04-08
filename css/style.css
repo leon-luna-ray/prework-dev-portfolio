@@ -92,10 +92,8 @@ section > h1 {
   max-width: 300px;
   border: 1px solid lightgray;
   transition: transform 250ms;
-  /* overflow: hidden; */
 }
 .projects li .image-link img {
-  /* object-fit: cover; */
   max-width: 200px;
 }
 .projects li .image-link:hover {
@@ -114,7 +112,6 @@ section > h1 {
     border: none;
   }
   .projects li .image-link img {
-    /* border: 3px solid green; */
     max-width: none;
   }
   .projects li .image-link:hover {
