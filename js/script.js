@@ -46,6 +46,7 @@ if (projects.length) {
 
     if (project.repository) {
       codeLink.href = project.repository;
+      codeLink.target = '_blank';
       codeLink.textContent = 'Code'
       links.appendChild(codeLink);
     }
