@@ -32,7 +32,7 @@ if (projects.length) {
     title.textContent = project?.title;
     text.textContent = project?.description[0].children[0].text;
 
-    image.src = getImageUrl(project?.mainImage).width(200).url();
+    image.src = getImageUrl(project?.mainImage).width(640).url();
     imageLink.classList.add('image-link');
     imageLink.href = project?.url;
     imageLink.target = '_blank';

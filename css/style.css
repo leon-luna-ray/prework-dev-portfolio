@@ -89,14 +89,37 @@ section > h1 {
 }
 .projects li .image-link {
   aspect-ratio: 1/1;
+  max-width: 300px;
   border: 1px solid lightgray;
   transition: transform 250ms;
+  /* overflow: hidden; */
 }
 .projects li .image-link img {
-  object-fit: cover;
+  /* object-fit: cover; */
+  max-width: 200px;
 }
 .projects li .image-link:hover {
   transform: scale(1.07);
+}
+@media screen and (max-width: 640px) {
+  .projects li {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+  .projects li .image-link {
+    aspect-ratio: 16/9;
+    max-width: none;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: none;
+  }
+  .projects li .image-link img {
+    /* border: 3px solid green; */
+    max-width: none;
+  }
+  .projects li .image-link:hover {
+    transform: scale(1.0);
+  }
 }
 
 /* Footer */
