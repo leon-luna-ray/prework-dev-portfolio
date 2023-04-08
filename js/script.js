@@ -1,32 +1,47 @@
-let QUERY = encodeURIComponent('*[_type == "post"]');
+import imageUrlBuilder from '@sanity/image-url';
+import { client, getFeaturedProjects } from './sanity';
 
-// Compose the URL for your project's endpoint and add the query
-let URL = `https://${import.meta.env.VITE_SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${import.meta.env.VITE_SANITY_DATASET}?query=${QUERY}`;
+const projects = await getFeaturedProjects();
+const builder = imageUrlBuilder(client);
 
-fetch(URL)
-  .then((res) => res.json())
-  .then(({ result }) => {
-    // get the list element, and the first item
-    let list = document.querySelector('ul');
-    let firstListItem = document.querySelector('ul li');
+const projectSection = document.querySelector('.projects');
+const projectList = document.querySelector('.projects ul');
 
-    if (result.length > 0) {
-      // remove the placeholder content
-      list.removeChild(firstListItem);
+function getImageUrl(source) {
+  return builder.image(source);
+}
 
-      result.forEach((post) => {
-        // create a list element for each post
-        let listItem = document.createElement('li');
+// Projects
+if (projects.length) {
+  projectSection.classList.remove('hidden');
 
-        // add the post name as the text content
-        listItem.textContent = post?.name;
+  projects.forEach((project) => {
+    const listItem = document.createElement('li');
+    const content = document.createElement('div');
+    const title = document.createElement('h3');
+    const text = document.createElement('p');
+    const image = document.createElement('img');
+    const projectLink = document.createElement('a');
+    const codeLink = document.createElement('a');
 
-        // add the item to the list
-        list.appendChild(listItem);
-      });
-      let pre = document.querySelector('pre');
-      // add the raw data to the preformatted element
-      pre.textContent = JSON.stringify(result, null, 2);
+    content.classList.add('content');
+    title.textContent = project?.title;
+    text.textContent = project?.description[0].children[0].text;
+    image.src = getImageUrl(project?.mainImage).width(200).url();
+    projectLink.href = project?.url;
+    projectLink.target = '_blank';
+    projectLink.textContent = project?.title;
+
+    content.appendChild(title);
+    content.appendChild(text);
+    content.appendChild(projectLink);
+    if (project.repository) {
+      codeLink.href = project.repository;
+      codeLink.textContent = 'Code'
+      content.appendChild(codeLink);
     }
-  })
-  .catch((err) => console.error(err));
+    listItem.appendChild(image);
+    listItem.appendChild(content);
+    projectList.appendChild(listItem);
+  });
+}

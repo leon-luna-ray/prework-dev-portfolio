@@ -1,8 +1,10 @@
 ## About Me
+This my very first coding project a website about me. It was originally a static HTML site.
+It was since refactored it to pull data from Sanity CMS and is hosted on Netlify.
 
-* This website is a static HTML website using semantic tags and minimal CSS.
-* It is currently hosted on Github Pages.
-* This was my very first coding project, refactored to use Sanity.
+It is a single HTML page with CSS and Vanilla JavaScript.
+
+[prework-about-me.netlify.app](https://prework-about-me.netlify.app)
 
 Technologies
 - HTML5
@@ -10,3 +12,4 @@ Technologies
 - JavaScript ES6
 - Vite.js
 - Sanity
+- Netlify
