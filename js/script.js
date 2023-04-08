@@ -32,7 +32,7 @@ if (projects.length) {
     title.textContent = project?.title;
     text.textContent = project?.description[0].children[0].text;
 
-    image.src = getImageUrl(project?.mainImage).width(200).url();
+    image.src = getImageUrl(project?.mainImage).width(640).url();
     imageLink.classList.add('image-link');
     imageLink.href = project?.url;
     imageLink.target = '_blank';
@@ -40,12 +40,13 @@ if (projects.length) {
 
     projectLink.href = project?.url;
     projectLink.target = '_blank';
-    projectLink.textContent = project?.title;
+    projectLink.textContent = 'Launch';
 
     links.appendChild(projectLink);
 
     if (project.repository) {
       codeLink.href = project.repository;
+      codeLink.target = '_blank';
       codeLink.textContent = 'Code'
       links.appendChild(codeLink);
     }
