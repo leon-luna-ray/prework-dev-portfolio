@@ -40,7 +40,7 @@ if (projects.length) {
 
     projectLink.href = project?.url;
     projectLink.target = '_blank';
-    projectLink.textContent = project?.title;
+    projectLink.textContent = 'Launch';
 
     links.appendChild(projectLink);
 
