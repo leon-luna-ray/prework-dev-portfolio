@@ -1,9 +1,11 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, getFeaturedProjects, getProfile } from './sanity';
+import { client, fetchFeaturedProjects, fetchProfile, fetchSkills } from './sanity';
 
-const profile = await getProfile();
-const projects = await getFeaturedProjects();
+const profile = await fetchProfile();
+const projects = await fetchFeaturedProjects();
+const skills = await fetchSkills();
 const builder = imageUrlBuilder(client);
+console.log(skills)
 
 const aboutSection = document.querySelector('.about');
 const projectSection = document.querySelector('.projects');

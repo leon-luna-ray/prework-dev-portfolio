@@ -7,12 +7,18 @@ export const client = createClient({
   apiVersion: '2023-04-08',
 })
 
-export async function getFeaturedProjects() {
+
+export async function fetchProfile() {
+  const profile = await client.fetch('*[_type == "profileDetails"][0]')
+  return profile
+}
+
+export async function fetchFeaturedProjects() {
   const projects = await client.fetch('*[_type == "project" && featured] | order(_updatedAt desc)')
   return projects
 }
 
-export async function getProfile() {
-  const profile = await client.fetch('*[_type == "profileDetails"][0]')
-  return profile
+export async function fetchSkills() {
+  const skills = await client.fetch('*[_type == "skillsList"]')
+  return skills;
 }
