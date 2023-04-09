@@ -1,9 +1,14 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, fetchFeaturedProjects, fetchProfile, fetchSkills } from './sanity';
+import {
+  client,
+  fetchFeaturedProjects,
+  fetchProfile,
+  fetchSkills,
+} from './sanity';
 
 const profile = await fetchProfile();
 const projects = await fetchFeaturedProjects();
-const skillLists = await fetchSkills();
+// const skillLists = await fetchSkills();
 const builder = imageUrlBuilder(client);
 
 const aboutSection = document.querySelector('.about');
@@ -41,11 +46,11 @@ if (profile) {
 }
 
 // Skills
-if(skillLists.length) {
-  skillLists.forEach((list, index) => {
-    list.skills.forEach(skill => console.log(skill))
-  })
-}
+// if (skillLists.length) {
+//   skillLists.forEach((list, index) => {
+//     list.skills.forEach((skill) => console.log(skill));
+//   });
+// }
 
 // Projects
 if (projects.length) {
