@@ -4,7 +4,7 @@ It was since refactored it to pull data from Sanity CMS and is hosted on Netlify
 
 It is a single HTML page with CSS and Vanilla JavaScript.
 
-[https://prework-about-me.netlify.app](https://prework-about-me.netlify.app)
+[https://prework-about-me.netlify.app](https://prework-portfolio-rldev.netlify.app/)
 
 Technologies
 - HTML5
