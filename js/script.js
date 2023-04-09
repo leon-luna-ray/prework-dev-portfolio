@@ -3,9 +3,8 @@ import { client, fetchFeaturedProjects, fetchProfile, fetchSkills } from './sani
 
 const profile = await fetchProfile();
 const projects = await fetchFeaturedProjects();
-const skills = await fetchSkills();
+const skillLists = await fetchSkills();
 const builder = imageUrlBuilder(client);
-console.log(skills)
 
 const aboutSection = document.querySelector('.about');
 const projectSection = document.querySelector('.projects');
@@ -39,6 +38,13 @@ if (profile) {
   document.querySelector('#footer .social .github').appendChild(github);
 
   aboutSection.classList.remove('hidden');
+}
+
+// Skills
+if(skillLists.length) {
+  skillLists.forEach((list, index) => {
+    list.skills.forEach(skill => console.log(skill))
+  })
 }
 
 // Projects
