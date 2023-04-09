@@ -131,6 +131,9 @@ section > h1 {
 #footer a {
   color: #ffffff;
 }
+#footer .copyright {
+  color: white;
+}
 #footer .social li {
   display: flex;
   flex-direction: column;
