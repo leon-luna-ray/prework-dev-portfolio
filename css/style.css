@@ -99,6 +99,7 @@ section > h1 {
 .projects li .image-link:hover {
   transform: scale(1.07);
 }
+
 @media screen and (max-width: 640px) {
   .projects li {
     flex-direction: column;
