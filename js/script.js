@@ -1,20 +1,46 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, getFeaturedProjects } from './sanity';
+import { client, getFeaturedProjects, getProfile } from './sanity';
 
+const profile = await getProfile();
 const projects = await getFeaturedProjects();
 const builder = imageUrlBuilder(client);
 
+const aboutSection = document.querySelector('.about');
 const projectSection = document.querySelector('.projects');
-const projectList = document.querySelector('.projects ul');
+const year = new Date().getFullYear();
 
 function getImageUrl(source) {
   return builder.image(source);
 }
 
+// Profile
+if (profile) {
+  const bio = document.createTextNode(profile.bio);
+  const copyrightText = document.createTextNode(year);
+  const email = document.createElement('a');
+  const website = document.createElement('a');
+  const github = document.createElement('a');
+
+  email.href = `mailto:${profile.email}`;
+  email.textContent = profile.email;
+  website.href = profile.website;
+  website.target = '_blank';
+  website.textContent = profile.website;
+  github.href = profile?.github;
+  github.target = '_blank';
+  github.textContent = profile.github_user;
+
+  document.querySelector('.about .bio').appendChild(bio);
+  document.querySelector('.copyright').appendChild(copyrightText);
+  document.querySelector('#footer .social .website').appendChild(website);
+  document.querySelector('#footer .social .email').appendChild(email);
+  document.querySelector('#footer .social .github').appendChild(github);
+
+  aboutSection.classList.remove('hidden');
+}
+
 // Projects
 if (projects.length) {
-  projectSection.classList.remove('hidden');
-
   projects.forEach((project) => {
     const listItem = document.createElement('li');
     const content = document.createElement('div');
@@ -47,7 +73,7 @@ if (projects.length) {
     if (project.repository) {
       codeLink.href = project.repository;
       codeLink.target = '_blank';
-      codeLink.textContent = 'Code'
+      codeLink.textContent = 'Code';
       links.appendChild(codeLink);
     }
 
@@ -57,6 +83,8 @@ if (projects.length) {
 
     listItem.appendChild(imageLink);
     listItem.appendChild(content);
-    projectList.appendChild(listItem);
+    document.querySelector('.projects ul').appendChild(listItem);
   });
+
+  projectSection.classList.remove('hidden');
 }

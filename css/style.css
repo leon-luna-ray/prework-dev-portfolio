@@ -17,7 +17,7 @@ a {
 }
 
 a:hover {
-  color: red;
+  color: goldenrod;
 }
 section {
   max-width: 38em;
@@ -92,15 +92,14 @@ section > h1 {
   max-width: 300px;
   border: 1px solid lightgray;
   transition: transform 250ms;
-  /* overflow: hidden; */
 }
 .projects li .image-link img {
-  /* object-fit: cover; */
   max-width: 200px;
 }
 .projects li .image-link:hover {
   transform: scale(1.07);
 }
+
 @media screen and (max-width: 640px) {
   .projects li {
     flex-direction: column;
@@ -114,7 +113,6 @@ section > h1 {
     border: none;
   }
   .projects li .image-link img {
-    /* border: 3px solid green; */
     max-width: none;
   }
   .projects li .image-link:hover {
@@ -133,7 +131,19 @@ section > h1 {
 #footer a {
   color: #ffffff;
 }
-.social > li {
+#footer .social li {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+}
+#footer .social li a:hover {
+  color: goldenrod;
+}
+#footer .social li span {
+  color: white;
+  display: block;
+}
+#footer .social > li {
   display: inline-block;
   margin: 0 5px;
 }
