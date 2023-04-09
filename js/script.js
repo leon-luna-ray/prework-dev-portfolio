@@ -16,7 +16,7 @@ function getImageUrl(source) {
 // Profile
 if (profile) {
   const bio = document.createTextNode(profile.bio);
-  const copyrightText = document.createTextNode(`${profile.name} ${year}`);
+  const copyrightText = document.createTextNode(year);
   const email = document.createElement('a');
   const website = document.createElement('a');
   const github = document.createElement('a');
