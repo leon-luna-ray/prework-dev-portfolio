@@ -13,3 +13,5 @@ Technologies
 - Vite.js
 - Sanity
 - Netlify
+
+![Screenshot](./public/img/pwam-screenshot.png)

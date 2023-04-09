@@ -3,7 +3,7 @@ import {
   client,
   fetchFeaturedProjects,
   fetchProfile,
-  fetchSkills,
+  // fetchSkills,
 } from './sanity';
 
 const profile = await fetchProfile();
