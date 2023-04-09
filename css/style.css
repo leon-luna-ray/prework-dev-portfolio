@@ -17,7 +17,7 @@ a {
 }
 
 a:hover {
-  color: red;
+  color: goldenrod;
 }
 section {
   max-width: 38em;
@@ -131,7 +131,19 @@ section > h1 {
 #footer a {
   color: #ffffff;
 }
-.social > li {
+#footer .social li {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+}
+#footer .social li a:hover {
+  color: goldenrod;
+}
+#footer .social li span {
+  color: white;
+  display: block;
+}
+#footer .social > li {
   display: inline-block;
   margin: 0 5px;
 }

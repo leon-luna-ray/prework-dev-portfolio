@@ -21,7 +21,7 @@ if (profile) {
   const website = document.createElement('a');
   const github = document.createElement('a');
 
-  email.href = profile.email;
+  email.href = `mailto:${profile.email}`;
   email.textContent = profile.email;
   website.href = profile.website;
   website.target = '_blank';
