@@ -1,9 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url';
-import {
-  client,
-  fetchFeaturedProjects,
-  fetchProfile,
-} from './sanity';
+import { client, fetchFeaturedProjects, fetchProfile } from './sanity';
 
 const profile = await fetchProfile();
 const projects = await fetchFeaturedProjects();
@@ -11,7 +7,9 @@ const builder = imageUrlBuilder(client);
 
 const aboutSection = document.querySelector('.about');
 const projectSection = document.querySelector('.projects');
+
 const year = new Date().getFullYear();
+const copyrightText = document.createTextNode(year);
 
 function getImageUrl(source) {
   return builder.image(source);
@@ -19,27 +17,38 @@ function getImageUrl(source) {
 
 // Profile
 if (profile) {
-  const bio = document.createTextNode(profile.bio);
-  const copyrightText = document.createTextNode(year);
-  const linkedin = document.createElement('a');
-  const website = document.createElement('a');
-  const github = document.createElement('a');
+  if (profile.bio) {
+    const bio = document.createTextNode(profile.bio);
 
-  linkedin.href = profile.linkedin || '#';
-  linkedin.textContent = profile.linkedin_user || profile;
-  linkedin.target = '_blank';
-  website.href = profile.website;
-  website.target = '_blank';
-  website.textContent = profile.website_name || 'Website';
-  github.href = profile?.github;
-  github.target = '_blank';
-  github.textContent = profile.github_user;
+    document.querySelector('.about .bio').appendChild(bio);
+  }
+  if (profile.github) {
+    const github = document.createElement('a');
 
-  document.querySelector('.about .bio').appendChild(bio);
-  document.querySelector('.copyright').appendChild(copyrightText);
-  document.querySelector('#footer .social .website').appendChild(website);
-  document.querySelector('#footer .social .linkedin').appendChild(linkedin);
-  document.querySelector('#footer .social .github').appendChild(github);
+    github.href = profile?.github;
+    github.target = '_blank';
+    github.textContent = profile.github_user;
+
+    document.querySelector('#footer .social .github').appendChild(github);
+  }
+  if (profile.linkedin) {
+    const linkedin = document.createElement('a');
+
+    linkedin.href = profile.linkedin || '#';
+    linkedin.textContent = profile.linkedin_user || profile;
+    linkedin.target = '_blank';
+
+    document.querySelector('#footer .social .linkedin').appendChild(linkedin);
+  }
+  if (profile.website) {
+    const website = document.createElement('a');
+
+    website.href = profile.website;
+    website.target = '_blank';
+    website.textContent = profile.website_name || 'Website';
+
+    document.querySelector('#footer .social .website').appendChild(website);
+  }
 
   aboutSection.classList.remove('hidden');
 }
@@ -93,3 +102,5 @@ if (projects.length) {
 
   projectSection.classList.remove('hidden');
 }
+
+document.querySelector('.copyright').appendChild(copyrightText);
