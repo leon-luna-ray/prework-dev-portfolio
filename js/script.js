@@ -27,16 +27,17 @@ if (profile) {
 
     github.href = profile?.github;
     github.target = '_blank';
-    github.textContent = profile.github_user;
+    github.textContent = profile.github_user || 'Profile';
 
     document.querySelector('#footer .social .github').appendChild(github);
   }
   if (profile.linkedin) {
     const linkedin = document.createElement('a');
 
-    linkedin.href = profile.linkedin || '#';
-    linkedin.textContent = profile.linkedin_user || profile;
+    linkedin.href = profile.linkedin;
     linkedin.target = '_blank';
+    linkedin.textContent = profile.linkedin_user || 'Profile';
+
 
     document.querySelector('#footer .social .linkedin').appendChild(linkedin);
   }
