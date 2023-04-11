@@ -3,12 +3,10 @@ import {
   client,
   fetchFeaturedProjects,
   fetchProfile,
-  // fetchSkills,
 } from './sanity';
 
 const profile = await fetchProfile();
 const projects = await fetchFeaturedProjects();
-// const skillLists = await fetchSkills();
 const builder = imageUrlBuilder(client);
 
 const aboutSection = document.querySelector('.about');
@@ -23,15 +21,16 @@ function getImageUrl(source) {
 if (profile) {
   const bio = document.createTextNode(profile.bio);
   const copyrightText = document.createTextNode(year);
-  const email = document.createElement('a');
+  const linkedin = document.createElement('a');
   const website = document.createElement('a');
   const github = document.createElement('a');
 
-  email.href = `mailto:${profile.email}`;
-  email.textContent = profile.email;
+  linkedin.href = profile.linkedin || '#';
+  linkedin.textContent = profile.linkedin_user || profile;
+  linkedin.target = '_blank';
   website.href = profile.website;
   website.target = '_blank';
-  website.textContent = profile.website;
+  website.textContent = profile.website_name || 'Website';
   github.href = profile?.github;
   github.target = '_blank';
   github.textContent = profile.github_user;
@@ -39,18 +38,11 @@ if (profile) {
   document.querySelector('.about .bio').appendChild(bio);
   document.querySelector('.copyright').appendChild(copyrightText);
   document.querySelector('#footer .social .website').appendChild(website);
-  document.querySelector('#footer .social .email').appendChild(email);
+  document.querySelector('#footer .social .linkedin').appendChild(linkedin);
   document.querySelector('#footer .social .github').appendChild(github);
 
   aboutSection.classList.remove('hidden');
 }
-
-// Skills
-// if (skillLists.length) {
-//   skillLists.forEach((list, index) => {
-//     list.skills.forEach((skill) => console.log(skill));
-//   });
-// }
 
 // Projects
 if (projects.length) {
