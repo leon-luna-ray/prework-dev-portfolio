@@ -22,6 +22,7 @@ if (profile) {
 
     document.querySelector('.about .bio').appendChild(bio);
   }
+
   if (profile.github) {
     const github = document.createElement('a');
 
@@ -31,6 +32,7 @@ if (profile) {
 
     document.querySelector('#footer .social .github').appendChild(github);
   }
+
   if (profile.linkedin) {
     const linkedin = document.createElement('a');
 
@@ -41,6 +43,7 @@ if (profile) {
 
     document.querySelector('#footer .social .linkedin').appendChild(linkedin);
   }
+
   if (profile.website) {
     const website = document.createElement('a');
 
