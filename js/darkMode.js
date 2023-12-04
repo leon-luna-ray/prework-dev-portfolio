@@ -16,7 +16,7 @@ const handleDarkModeChange = (e) => {
 
 darkPreference.addEventListener('change', handleDarkModeChange);
 
-// Event listener for manual dark mode toggle button
+// TODO add dark mode btn
 // darkModeBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   toggleDarkMode();
