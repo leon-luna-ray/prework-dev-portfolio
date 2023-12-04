@@ -20,3 +20,10 @@ export async function fetchFeaturedProjects() {
 
   return projects;
 }
+
+export async function fetchProjects() {
+  const query = '*[_type == "project" && status != "n/a"] | order(title asc)';
+  const projects = await client.fetch(query);
+
+  return projects;
+}

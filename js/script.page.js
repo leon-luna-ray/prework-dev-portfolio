@@ -1,8 +1,8 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, fetchFeaturedProjects, fetchProfile } from './sanity';
+import { client, fetchProjects, fetchProfile } from './sanity';
 
 const profile = await fetchProfile();
-const projects = await fetchFeaturedProjects();
+const projects = await fetchProjects();
 const builder = imageUrlBuilder(client);
 
 const aboutSection = document.querySelector('.about');
@@ -71,13 +71,16 @@ if (projects.length) {
     const codeLink = document.createElement('a');
 
     content.classList.add('content');
+    content.classList.add('mobile-padding');
     links.classList.add('links');
 
     title.textContent = project?.title;
-    text.textContent = project?.description[0].children[0].text;
 
-    image.src = getImageUrl(project?.mainImage).width(640).url();
+    text.textContent = project?.intro;
+
+    image.src = getImageUrl(project?.mainImage).size(400,400).url();
     imageLink.classList.add('image-link');
+    
     imageLink.href = project?.url;
     imageLink.target = '_blank';
     imageLink.appendChild(image);

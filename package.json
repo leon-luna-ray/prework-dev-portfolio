@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@sanity/client": "^5.4.2",
-    "@sanity/image-url": "^1.0.2",
-    "vite-plugin-ssr": "^0.4.112"
+    "@sanity/image-url": "^1.0.2"
   }
 }
