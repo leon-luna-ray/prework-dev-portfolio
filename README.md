@@ -9,12 +9,12 @@ Project URL: [https://prework-portfolio-rldev.netlify.app/](https://prework-port
 dev-cms: [https://github.com/leon-luna-ray/dev-cms/](https://github.com/leon-luna-ray/dev-cms/)
 
 ## Technologies
-- HTML5
 - CSS3
-- JavaScript ES6
-- Vite.js
-- Sanity
+- HTML5
+- JavaScript
 - Netlify
+- Sanity
+- Vite.js
 
 ## Image
-![Screenshot](./public/img/pwam-screenshot.png)
+![Screenshot](./public/img/project-grid.png)
