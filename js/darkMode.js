@@ -1,24 +1,25 @@
 const html = document.querySelector('html');
 const darkModeBtn = document.getElementById('dark-mode-btn');
 const darkPreference = window.matchMedia('(prefers-color-scheme: dark)');
-const isDarkMode = html.classList.contains('dark');
 
-// Methods
 const toggleDarkMode = () => {
   html.classList.toggle('dark');
 };
-const handleDarkModeChange = () => {
-  if ((!isDarkMode && darkPreference.matches) || (isDarkMode && !darkPreference.matches)) {
+
+const handleDarkModeChange = (e) => {
+  const isDarkMode = html.classList.contains('dark');
+
+  if ((isDarkMode && !e.matches) || (!isDarkMode && e.matches)) {
     toggleDarkMode();
   }
 };
 
-// Events
 darkPreference.addEventListener('change', handleDarkModeChange);
 
+// Event listener for manual dark mode toggle button
 // darkModeBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   toggleDarkMode();
 // });
 
-handleDarkModeChange();
+handleDarkModeChange(darkPreference);
