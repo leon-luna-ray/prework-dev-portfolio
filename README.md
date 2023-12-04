@@ -3,6 +3,8 @@ This my very first coding project assigned as prework for my coding bootcamp at 
 
 Project URL: [https://prework-portfolio-rldev.netlify.app/](https://prework-portfolio-rldev.netlify.app/)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d2a36414-f3dc-4cce-81e7-b3ef1036f151/deploy-status)](https://app.netlify.com/sites/prework-portfolio-rldev/deploys)
+
 ## Related Project
 dev-cms: [https://github.com/leon-luna-ray/dev-cms/](https://github.com/leon-luna-ray/dev-cms/)
 
