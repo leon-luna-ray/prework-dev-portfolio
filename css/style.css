@@ -1,9 +1,14 @@
 /* Global */
 body {
-  color: #222222;
+  color: #1a1a1a;
   font-size: 1em;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
+}
+
+.dark body {
+  background-color: #1a1a1a;
+  color: white;
 }
 
 h2 {
@@ -16,7 +21,11 @@ h3 {
 }
 
 a {
-  color: #222222;
+  color: #1a1a1a;
+}
+
+.dark a {
+  color: white;
 }
 
 a:hover {
@@ -118,6 +127,9 @@ section>h1 {
   aspect-ratio: 1/1;
   border: 1px solid lightgray;
   transition: transform 250ms;
+}
+.dark .projects li .image-link {
+  border: none;
 }
 
 .projects li .image-link:hover {
