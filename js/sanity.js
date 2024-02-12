@@ -27,3 +27,38 @@ export async function fetchProjects() {
 
   return projects;
 }
+
+
+// API Queries
+const queryGlobalSettings = `*[_type == "globalSettings"][0]`
+const queryProjects =`*[_type == "project" && status != "n/a"] | order(title asc){
+  ...,
+  "mainImage": mainImage.asset->{
+    _id,
+    title,
+    altText,
+    description,
+  }
+}`
+const queryProfile = `*[_type == "profileDetails"][0]{
+    ...,
+    "image": image.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    }
+  }`
+
+
+// API Requests
+export async function fetchHomePage() {
+  const query = `{
+      "global": ${queryGlobalSettings},
+      "profile": ${queryProfile},
+      "projects": ${queryProjects},
+  }`;
+  const data = await client.fetch(query);
+
+  return data;
+}
