@@ -1,5 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, fetchProjects, fetchProfile, fetchHomePage } from './sanity';
+import { client, fetchHomePage } from './sanity';
 document.addEventListener('DOMContentLoaded', async () => {
   const data = await fetchHomePage();
   
