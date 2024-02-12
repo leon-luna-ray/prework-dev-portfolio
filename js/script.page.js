@@ -1,11 +1,9 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { client, fetchProjects, fetchProfile } from './sanity';
+import { client, fetchHomePage } from './sanity';
 document.addEventListener('DOMContentLoaded', async () => {
-
-  const profile = await fetchProfile();
-  const projects = await fetchProjects();
+  const data = await fetchHomePage();
+  
   const builder = imageUrlBuilder(client);
-
   const aboutSection = document.querySelector('.about');
   const projectSection = document.querySelector('.projects');
 
@@ -17,40 +15,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Profile
-  if (profile) {
-    if (profile.bio) {
-      const bio = document.createTextNode(profile.bio);
+  if (data?.profile) {
+    if (data?.profile.bio) {
+      const bio = document.createTextNode(data?.profile.bio);
 
       document.querySelector('.about .bio').appendChild(bio);
     }
 
-    if (profile.github) {
+    if (data?.profile.github) {
       const github = document.createElement('a');
 
-      github.href = profile?.github;
+      github.href = data?.profile?.github;
       github.target = '_blank';
-      github.textContent = profile.github_user || 'Profile';
+      github.textContent = data?.profile.github_user || 'data?.profile';
 
       document.querySelector('#footer .social .github').appendChild(github);
     }
 
-    if (profile.linkedin) {
+    if (data?.profile.linkedin) {
       const linkedin = document.createElement('a');
 
-      linkedin.href = profile.linkedin;
+      linkedin.href = data?.profile.linkedin;
       linkedin.target = '_blank';
-      linkedin.textContent = profile.linkedin_user || 'Profile';
+      linkedin.textContent = data?.profile.linkedin_user || 'data?.profile';
 
 
       document.querySelector('#footer .social .linkedin').appendChild(linkedin);
     }
 
-    if (profile.website) {
+    if (data?.profile.website) {
       const website = document.createElement('a');
 
-      website.href = profile.website;
+      website.href = data?.profile.website;
       website.target = '_blank';
-      website.textContent = profile.website_name || 'Website';
+      website.textContent = data?.profile.website_name || 'Website';
 
       document.querySelector('#footer .social .website').appendChild(website);
     }
@@ -59,8 +57,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Projects
-  if (projects.length) {
-    projects.forEach((project) => {
+  if (data?.projects.length) {
+    data?.projects.forEach((project) => {
       const listItem = document.createElement('li');
       const content = document.createElement('div');
       const title = document.createElement('h3');
@@ -78,8 +76,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       title.textContent = project?.title;
 
       text.textContent = project?.intro;
-
+ 
       image.src = getImageUrl(project?.mainImage).size(400, 400).url();
+      image.alt = project.mainImage.altText || 'Project Image';
       imageLink.classList.add('image-link');
 
       imageLink.href = project?.url;
